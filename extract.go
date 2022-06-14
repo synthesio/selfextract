@@ -292,7 +292,9 @@ func (se *selfExtractor) startup() {
 		} else {
 			se.exitCode <- 1
 		}
+		return
 	}
+	se.exitCode <- 0
 }
 
 func (se *selfExtractor) cleanup() {
