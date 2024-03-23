@@ -1,4 +1,4 @@
-module selfextract
+module github.com/synthesio/selfextract
 
 go 1.18
 
