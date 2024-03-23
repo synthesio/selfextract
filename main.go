@@ -93,9 +93,13 @@ const maxBoundaryOffset = 100e6 // 100 MB
 
 func readSelf() ([]byte, io.ReadCloser, []byte) {
 	t := time.Now()
-	self, err := os.Open(os.Args[0])
+	exePath, err := os.Executable()
 	if err != nil {
-		die("opening itself:", err)
+		panic(err)
+	}
+	self, err := os.Open(exePath)
+	if err != nil {
+		die("opening itself:", exePath, err)
 	}
 	debug("opened itself in", time.Since(t))
 
